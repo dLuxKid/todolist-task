@@ -4,8 +4,15 @@ export default {
   theme: {
     extend: {
       colors: {
-        "black-pry": "#101828",
+        black: "#000000",
+        white: "#FFFFFF",
         "blue-pry": "#3F5BF6",
+        "gray-50": "#F9FAFB",
+        "gray-200": "#EAECF0",
+        "gray-300": "#D0D5DD",
+        "gray-600": "#475467",
+        "gray-700": "#344054",
+        "gray-900": "#101828",
       },
     },
   },
