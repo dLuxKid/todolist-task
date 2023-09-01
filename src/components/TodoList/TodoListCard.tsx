@@ -5,7 +5,7 @@ import { TodosType } from "../Main/Main";
 interface Props {
     todo: TodosType
     toggleTodo: (item: TodosType) => void
-    setSideBarModal: Dispatch<SetStateAction<"calendar" | "about" | "add" | "edit">>
+    setSideBarModal: Dispatch<SetStateAction<"" | "about" | "add" | "edit">>
     setSelectedTodo: Dispatch<SetStateAction<TodosType | null>>
 }
 

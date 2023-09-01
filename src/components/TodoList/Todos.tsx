@@ -9,7 +9,7 @@ interface Props {
     loading: boolean,
     error: string,
     todos: TodosType[],
-    setSideBarModal: Dispatch<SetStateAction<"calendar" | "about" | "add" | "edit">>
+    setSideBarModal: Dispatch<SetStateAction<"" | "about" | "add" | "edit">>
     setSelectedTodo: Dispatch<SetStateAction<TodosType | null>>
     toggleTodo: (item: TodosType) => void
 }

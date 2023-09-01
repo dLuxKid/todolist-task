@@ -2,7 +2,7 @@ import { Dispatch, SetStateAction, useState } from "react"
 
 interface Props {
     addTodo: (item: string) => void
-    setSideBarModal: Dispatch<SetStateAction<"calendar" | "about" | "add" | "edit">>
+    setSideBarModal: Dispatch<SetStateAction<"" | "about" | "add" | "edit">>
 }
 
 export default function AddTodo({ addTodo, setSideBarModal }: Props) {
@@ -13,17 +13,17 @@ export default function AddTodo({ addTodo, setSideBarModal }: Props) {
         e.preventDefault()
         if (todoInput) {
             addTodo(todoInput)
-            setSideBarModal('calendar')
+            setSideBarModal('')
         }
     }
 
     const handleCancel = () => {
         setTodoInput('')
-        setSideBarModal('calendar')
+        setSideBarModal('')
     }
 
     return (
-        <div className="max-w-[400px] flex-center flex-1 flex-col rounded-xl bg-white shadow-md">
+        <div className="max-w-[24.625rem] flex-center flex-1 flex-col rounded-xl bg-white shadow-md">
             <div className="px-6 pt-6 flex flex-col gap-4 w-full">
                 <div className="flex-between gap-4">
                     <p className="text-gray-900 text-lg font-semibold">Add Task</p>

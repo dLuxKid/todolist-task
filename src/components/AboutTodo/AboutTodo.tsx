@@ -5,16 +5,16 @@ import { TodosType } from "../Main/Main"
 interface Props {
     selectedTodo: TodosType
     deleteTodo: (item: TodosType) => void
-    setSideBarModal: Dispatch<SetStateAction<"calendar" | "about" | "add" | "edit">>
+    setSideBarModal: Dispatch<SetStateAction<"" | "about" | "add" | "edit">>
 }
 
 export default function AboutTodo({ selectedTodo, deleteTodo, setSideBarModal }: Props) {
 
     return (
-        <div className="max-w-[400px] flex-center flex-1 flex-col rounded-xl bg-white shadow-md px-6 py-[20px]">
+        <div className="max-w-[24.625rem] flex-center flex-1 flex-col rounded-xl bg-white shadow-md px-6 py-[20px]">
             <div className="flex flex-col gap-4 w-full">
                 <div className="flex-end">
-                    <span className="cursor-pointer" onClick={() => setSideBarModal("calendar")}>
+                    <span className="cursor-pointer" onClick={() => setSideBarModal("")}>
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="#09121F" xmlns="http://www.w3.org/2000/svg">
                             <path d="M18 6L6 18M6 6L18 18" stroke="#667085" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>

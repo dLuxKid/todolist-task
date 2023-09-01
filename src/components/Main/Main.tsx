@@ -4,13 +4,13 @@ import { useEffect, useState } from 'react';
 // data
 import { monthNames, september2023Dates } from "../../data/Date";
 // components
-import Calendar from '../Calendar/Calendar';
 import DateCard from "../DateCard/DateCard";
 import Todos from '../TodoList/Todos';
 import Pagination from '../Pagination/Pagination';
 import AddTodo from '../AddTodo/AddTodo';
 import AboutTodo from '../AboutTodo/AboutTodo';
 import EditTodo from '../EditTodo/EditTodo';
+import CalendarModal from '../Calendar/Calendar';
 
 
 export type TodosType = {
@@ -29,7 +29,7 @@ export default function Main() {
     const [currentPage, setCurrentPage] = useState(0);
     const [totalPages, setTotalPages] = useState(0);
 
-    const [sideBarModal, setSideBarModal] = useState<'calendar' | 'about' | 'add' | 'edit'>('calendar')
+    const [sideBarModal, setSideBarModal] = useState<'' | 'about' | 'add' | 'edit'>('')
 
     const [selectedTodo, setSelectedTodo] = useState<TodosType | null>(null)
 
@@ -61,62 +61,34 @@ export default function Main() {
     // TODO FUNCTIONS
     const toggleTodo = async (item: TodosType) => {
         setLoading(true);
-        try {
-            const response = await fetch(`https://jsonplaceholder.typicode.com/todos/${item.id}`, {
-                method: 'PUT',
-                body: JSON.stringify({
-                    ...item,
-                    completed: !item.completed,
-                }),
-                headers: {
-                    'Content-type': 'application/json; charset=UTF-8',
-                },
-            })
-            const data = await response.json();
-            const newTodos = todos.map(item => item.id === data.id ? data : item)
-            setTodos(newTodos);
-            setLoading(false);
-
-        } catch (err: any) {
-            setError(err.message);
-            setTodos([]);
-            setLoading(false);
-        }
+        const newTodos = todos.map(todo => todo.id === item.id ? {
+            ...item,
+            completed: !item.completed,
+        } : todo)
+        setTodos(newTodos);
+        setLoading(false);
     }
 
     const addTodo = async (text: string) => {
         setLoading(true);
-        try {
-            const response = await fetch('https://jsonplaceholder.typicode.com/todos', {
-                method: 'POST',
-                body: JSON.stringify({
-                    title: text,
-                    completed: false,
-                    userId: 1,
-                }),
-                headers: {
-                    'Content-type': 'application/json; charset=UTF-8',
-                },
-            })
-            const data = await response.json();
-            const newTodos = todos.concat(data)
-            setTodos(newTodos);
-            setTotalPages(Math.ceil(newTodos.length / 7));
-            setLoading(false);
-        } catch (err: any) {
-            setError(err.message);
-            setTodos([]);
-            setLoading(false);
-        }
-
+        const newTodos = todos.concat({
+            title: text,
+            completed: false,
+            userId: 1,
+            id: todos[todos.length - 1].id + 1
+        })
+        setTodos(newTodos);
+        setTotalPages(Math.ceil(newTodos.length / 7));
+        setLoading(false);
     }
 
     const deleteTodo = async (todo: TodosType) => {
         setLoading(true);
         const newTodos = todos.filter(item => item.id !== todo.id)
         setTodos(newTodos);
+        setTotalPages(Math.ceil(newTodos.length / 7));
         setLoading(false);
-        setSideBarModal('calendar')
+        setSideBarModal('')
     }
 
     const editTodo = async (item: TodosType) => {
@@ -128,7 +100,7 @@ export default function Main() {
         } : todo)
         setTodos(newTodos);
         setLoading(false);
-        setSideBarModal('calendar')
+        setSideBarModal('')
     }
 
 
@@ -140,7 +112,7 @@ export default function Main() {
                         <h1 className="text-gray-900 leading-[2.375rem] font-semibold text-[1.875rem]">Good Morning!</h1>
                         <p className="text-gray-600 text-base font-normal">you have some tasks to do</p>
                     </div>
-                    <div>
+                    <div className='hidden md:block'>
                         <button type='button' onClick={() => setSideBarModal('add')} className="py-[10px] px-4 flex-center gap-2 bg-blue-pry border border-blue-pry rounded-lg">
                             <span className="w-5 h-5">
                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -152,8 +124,8 @@ export default function Main() {
                     </div>
                 </div>
 
-                <div className='flex gap-4 w-full'>
-                    <div className="px-8 flex flex-col gap-8 md:w-2/3">
+                <div className='flex gap-4 w-full max-w-6xl'>
+                    <div className="px-8 flex flex-col gap-8 w-full md:w-[55%] big:w-2/3">
                         <div className="flex flex-col gap-4">
                             <h1 className="text-base text-gray-900 font-semibold">{monthNames[new Date().getMonth()]}{" "}{new Date().getFullYear()}</h1>
                             <div className="flex gap-4 overflow-x-scroll">
@@ -172,8 +144,8 @@ export default function Main() {
                         {/* pagination */}
                         <Pagination totalPages={totalPages} handlePageChange={handlePageChange} />
                     </div>
-                    <div className="pl-6 border-l border-l-gray-200 w-full">
-                        {sideBarModal === 'calendar' && <Calendar />}
+                    <div className="md:pl-6 md:border-l md:border-l-gray-200">
+                        {!sideBarModal && <CalendarModal />}
                         {sideBarModal === 'add' && <AddTodo
                             addTodo={addTodo}
                             setSideBarModal={setSideBarModal}

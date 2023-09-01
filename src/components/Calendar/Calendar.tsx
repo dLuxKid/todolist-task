@@ -1,19 +1,27 @@
 import { useState } from 'react'
-import DatePicker from 'react-datepicker'
-import "react-datepicker/dist/react-datepicker.css";
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
 
-export default function Calendar() {
-    const [startDate, setStartDate] = useState<Date | null>(new Date());
+type ValuePiece = Date | null;
+type Value = ValuePiece | [ValuePiece, ValuePiece];
+
+export default function CalendarModal() {
+    const [value, onChange] = useState<Value>(new Date());
+
     return (
-        <div className='px-6 py-5'>
-            <DatePicker
-                selected={startDate}
-                onChange={(date) => setStartDate(date)}
-                inline
-                className='w-full max-w-[400px] bg-white'
-                calendarClassName='text-gray-700 shadow-md bg-white'
-            />
-        </div>
+        <Calendar
+            onChange={onChange}
+            value={value}
+            tileClassName={({ date, activeStartDate }) =>
 
+                date.getDate() === new Date().getDate() && date.getMonth() === new Date().getMonth()
+                    ?
+                    'flex-center text-white bg-blue-pry hover:bg-blue-pry h-10 w-10 rounded-full duration-300'
+                    :
+                    'text-gray-700 hover:bg-gray-100 duration-300 h-10 w-10 rounded-full flex-center'
+
+            }
+            className={'max-w-[24.625rem] px-6 py-5 border border-gray-200 rounded-lg shadow-md hidden md:block w-full'}
+        />
     );
 }
