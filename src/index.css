@@ -43,19 +43,6 @@ input[type="checkbox"]:checked {
   accent-color: #ffffff;
 }
 
-/* TYPOGRAPHY */
-.title-text {
-  @apply font-semibold text-2xl md:text-3xl;
-}
-
-.body-text {
-  @apply font-normal text-base md:text-[1.125rem] leading-7;
-}
-
-.tiny-text {
-  @apply font-normal text-sm md:text-base;
-}
-
 /* FLEX TEMPLATE */
 .flex-center {
   @apply flex justify-center items-center;

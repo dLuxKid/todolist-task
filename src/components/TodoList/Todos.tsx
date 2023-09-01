@@ -1,3 +1,4 @@
+import { Dispatch, SetStateAction } from 'react'
 // components
 import Loader from "../Loader/Loader";
 import TodoListCard from "./TodoListCard";
@@ -7,11 +8,13 @@ import { TodosType } from "../Main/Main";
 interface Props {
     loading: boolean,
     error: string,
-    todos: TodosType,
-    toggleTodo: (id: number, completed: boolean) => void
+    todos: TodosType[],
+    setSideBarModal: Dispatch<SetStateAction<"calendar" | "about" | "add" | "edit">>
+    setSelectedTodo: Dispatch<SetStateAction<TodosType | null>>
+    toggleTodo: (item: TodosType) => void
 }
 
-export default function Todos({ loading, toggleTodo, error, todos }: Props) {
+export default function Todos({ loading, toggleTodo, error, todos, setSelectedTodo, setSideBarModal }: Props) {
     return (
         <div className="flex flex-col gap-4 w-full">
             <h1 className="text-base font-semibold text-gray-900">Tasks</h1>
@@ -20,7 +23,14 @@ export default function Todos({ loading, toggleTodo, error, todos }: Props) {
             <ul className="w-full flex flex-col gap-4">
                 {
                     // TODO: add functionality to card, style custom checkmark
-                    todos.map(todo => <TodoListCard key={todo.id} {...todo} toggleTodo={toggleTodo} />)
+                    todos && !loading && todos.map(todo =>
+                        <TodoListCard
+                            key={todo.id}
+                            todo={todo}
+                            toggleTodo={toggleTodo}
+                            setSelectedTodo={setSelectedTodo}
+                            setSideBarModal={setSideBarModal}
+                        />)
                 }
             </ul>
         </div>
