@@ -1,16 +1,17 @@
 
 // react
-import { useState, useEffect, useMemo } from 'react'
+import { useEffect, useState } from 'react';
 // data
 import { monthNames, september2023Dates } from "../../data/Date";
 // components
+
+import Calendar from '../Calendar/Calendar';
 import DateCard from "../DateCard/DateCard";
-import Loader from '../Loader/Loader';
-import TodoListCard from '../TodoListCard/TodoListCard';
-import ReactPaginate from 'react-paginate';
+import Todos from '../TodoList/Todos';
+import Pagination from '../Pagination/Pagination';
 
 
-type Todos = Array<{
+export type TodosType = Array<{
     userId: number
     id: number,
     title: string,
@@ -19,7 +20,7 @@ type Todos = Array<{
 
 export default function Main() {
 
-    const [todos, setTodos] = useState<Todos>([])
+    const [todos, setTodos] = useState<TodosType>([])
     const [loading, setLoading] = useState<boolean>(false)
     const [error, setError] = useState<string>('')
 
@@ -41,7 +42,6 @@ export default function Main() {
                 setLoading(false);
             }
         })();
-
     }, [])
 
     const startIndex = currentPage * 7;
@@ -58,6 +58,7 @@ export default function Main() {
 
     return (
         <main className="px-[3.125rem] pt-12 pb-24 h-full w-full">
+
             <div className="w-full h-full flex-center flex-col gap-8">
                 <div className="flex-between w-full px-8">
                     <div>
@@ -75,40 +76,23 @@ export default function Main() {
                         </button>
                     </div>
                 </div>
-                <div className="px-8 w-full flex flex-col gap-8">
-                    <div className="w-full flex flex-col gap-4">
-                        <h1 className="text-base text-gray-900 font-semibold">{monthNames[new Date().getMonth()]}{" "}{new Date().getFullYear()}</h1>
-                        <div className="flex gap-4 overflow-scroll">
-                            {september2023Dates.map((date, i) => <DateCard key={i} date={date} />)}
-                        </div>
-                    </div>
-                    {/* todos */}
-                    <div className="flex flex-col gap-4 w-full">
-                        <h1 className="text-base font-semibold text-gray-900">Tasks</h1>
-                        {loading && <Loader />}
-                        {error && <p className='text-center w-full items-center text-base font-semibold text-red-600'>{error}</p>}
-                        <ul className="w-full flex flex-col gap-4">
-                            {
-                                subset.map(todo => <TodoListCard key={todo.id} {...todo} toggleTodo={toggleTodo} />)
-                            }
-                        </ul>
 
+                <div className='flex gap-4 w-full'>
+                    <div className="px-8 flex flex-col gap-8 md:w-3/4">
+                        <div className="flex flex-col gap-4">
+                            <h1 className="text-base text-gray-900 font-semibold">{monthNames[new Date().getMonth()]}{" "}{new Date().getFullYear()}</h1>
+                            <div className="flex gap-4 overflow-x-scroll">
+                                {september2023Dates.map((date, i) => <DateCard key={i} date={date} />)}
+                            </div>
+                        </div>
+                        {/* todos */}
+                        <Todos todos={subset} loading={loading} error={error} toggleTodo={toggleTodo} />
+                        {/* pagination */}
+                        <Pagination totalPages={totalPages} handlePageChange={handlePageChange} />
                     </div>
-                    {/* pagination */}
-                    <div className='pt-5 w-full border-t border-t-gray-200 flex-center'>
-                        <ReactPaginate
-                            pageCount={totalPages}
-                            onPageChange={handlePageChange}
-                            forcePage={currentPage}
-                            previousLabel={"← Previous"}
-                            nextLabel={"Next →"}
-                            breakLabel={"..."}
-                            containerClassName={"flex items-center gap-1 text-base font-semibold text-gray-900 w-full"}
-                            activeClassName={"rounded-full bg-gray-50 h-10 w-10 flex-center"}
-                            pageClassName='h-10 w-10 flex-center'
-                            previousClassName={'mr-auto'}
-                            nextClassName={'ml-auto'}
-                        />
+                    <div className="pl-6 border-l border-l-gray-200">
+                        {/* TODO: style calender */}
+                        <Calendar />
                     </div>
                 </div>
             </div>
