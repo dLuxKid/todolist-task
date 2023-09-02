@@ -1,4 +1,6 @@
+// react
 import { useState } from 'react'
+// react-calendar
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 
@@ -12,7 +14,7 @@ export default function CalendarModal() {
         <Calendar
             onChange={onChange}
             value={value}
-            tileClassName={({ date, activeStartDate }) =>
+            tileClassName={({ date }) =>
 
                 date.getDate() === new Date().getDate() && date.getMonth() === new Date().getMonth()
                     ?

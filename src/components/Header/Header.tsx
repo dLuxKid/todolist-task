@@ -1,22 +1,22 @@
+// react
 import { useState } from 'react'
-
+// images
 import logo from '../../assets/Avatar.png'
 
 export default function Header() {
-
-
     const [showMenu, setShowMenu] = useState<boolean>(false)
 
     const toggleMenu = () => setShowMenu(prev => !prev)
 
     return (
-        <header className="w-full h-[4.5rem] px-[3.25rem] bg-[#fff] border-b border-b-[#EAECF0] ">
-            <div className='h-full px-8 w-full flex-between'>
+        <header className="w-full h-[4.5rem] md:px-[3.25rem] bg-[#fff] border-b border-b-[#EAECF0] ">
+            <div className='h-full px-4 md:px-8 w-full flex-between'>
                 <div className=" w-[6.25rem] mr-[2.625rem] flex-center py-1 pr-[33px] pl-[5px]">
                     <h1 className="text-2xl leading-6 text-black font-bold font-['Inter']">
                         ToDo
                     </h1>
                 </div>
+
                 {/* Desktop Nav */}
                 <nav className='hidden md:block'>
                     <ul className="flex-between gap-1">
@@ -43,6 +43,7 @@ export default function Header() {
                         </li>
                     </ul>
                 </nav>
+
                 {/* nav btn */}
                 <div className='block md:hidden cursor-pointer' onClick={toggleMenu}>
                     <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">

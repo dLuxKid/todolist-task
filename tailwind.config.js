@@ -6,6 +6,7 @@ export default {
       screens: {
         big: "992px",
       },
+      boxShadow: {},
       colors: {
         black: "#000000",
         white: "#FFFFFF",

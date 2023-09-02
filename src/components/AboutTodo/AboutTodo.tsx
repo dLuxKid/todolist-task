@@ -11,7 +11,7 @@ interface Props {
 export default function AboutTodo({ selectedTodo, deleteTodo, setSideBarModal }: Props) {
 
     return (
-        <div className="max-w-[24.625rem] flex-center flex-1 flex-col rounded-xl bg-white shadow-md px-6 py-[20px]">
+        <div className="h-[70vh] md:h-auto md:max-w-[24.625rem] w-full flex-start md:flex-center flex-col rounded-xl bg-white shadow-md px-6 py-[20px]">
             <div className="flex flex-col gap-4 w-full">
                 <div className="flex-end">
                     <span className="cursor-pointer" onClick={() => setSideBarModal("")}>

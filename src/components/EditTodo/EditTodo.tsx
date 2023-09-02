@@ -26,10 +26,10 @@ export default function EditTodo({ selectedTodo, editTodo, setSideBarModal }: Pr
     }
 
     return (
-        <div className="max-w-[24.625rem] flex-center flex-1 flex-col rounded-xl bg-white shadow-md">
+        <div className="h-[70vh] md:h-auto md:max-w-[24.625rem] w-full flex-start md:flex-center flex-col rounded-xl bg-white shadow-md">
             <div className="px-6 pt-6 flex flex-col gap-4 w-full">
                 <div className="flex-between gap-4">
-                    <p className="text-gray-900 text-lg font-semibold">Add Task</p>
+                    <p className="text-gray-900 text-lg font-semibold">Edit Task</p>
                     <span className="cursor-pointer" onClick={handleCancel}>
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M18 6L6 18M6 6L18 18" stroke="#667085" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -45,8 +45,15 @@ export default function EditTodo({ selectedTodo, editTodo, setSideBarModal }: Pr
                         onChange={e => setTodoInput(e.target.value)}
                     />
                 </div>
-                <div className="flex-between">
-                    <div>hey</div>
+                <div className="flex-start flex-col gap-4">
+                    <div>
+                        <span className="flex gap-2 px-4 py-[10px] w-[100px] border border-gray-300 rounded-lg bg-white">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M17.5 8.33334H2.5M13.3333 1.66667V5.00001M6.66667 1.66667V5.00001M6.5 18.3333H13.5C14.9001 18.3333 15.6002 18.3333 16.135 18.0609C16.6054 17.8212 16.9878 17.4387 17.2275 16.9683C17.5 16.4335 17.5 15.7335 17.5 14.3333V7.33334C17.5 5.93321 17.5 5.23314 17.2275 4.69836C16.9878 4.22796 16.6054 3.84551 16.135 3.60582C15.6002 3.33334 14.9001 3.33334 13.5 3.33334H6.5C5.09987 3.33334 4.3998 3.33334 3.86502 3.60582C3.39462 3.84551 3.01217 4.22796 2.77248 4.69836C2.5 5.23314 2.5 5.93321 2.5 7.33334V14.3333C2.5 15.7335 2.5 16.4335 2.77248 16.9683C3.01217 17.4387 3.39462 17.8212 3.86502 18.0609C4.3998 18.3333 5.09987 18.3333 6.5 18.3333Z" stroke="#344054" strokeWidth="1.66667" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                            <p className="text-sm font-semibold text-gray-500">Today</p>
+                        </span>
+                    </div>
                     <div className="flex gap-4">
                         <span className="flex gap-2 px-4 py-[10px] w-[100px] border border-gray-300 rounded-lg bg-white">
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
