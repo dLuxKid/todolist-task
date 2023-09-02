@@ -48,10 +48,10 @@ export default function AboutTodo({ selectedTodo, deleteTodo, setSideBarModal }:
                     </div>
                 </div>
                 <div className="pt-[2px] flex gap-3 w-full">
-                    <button type="button" className="flex-center shadow-sm py-[10px] px-[18px] text-semibold text-base text-gray-700 bg-white border border-gray-300 rounded-lg flex-1" onClick={() => deleteTodo(selectedTodo)}>
+                    <button type="button" className="flex-center shadow-sm py-[10px] px-[18px] text-semibold text-sm md:text-base text-gray-700 bg-white border border-gray-300 rounded-lg flex-1" onClick={() => deleteTodo(selectedTodo)}>
                         Delete
                     </button>
-                    <button type="button" className="flex-center shadow-sm py-[10px] px-[18px] text-semibold text-base text-white bg-blue-pry border border-blue-pry rounded-lg flex-1" onClick={() => setSideBarModal("edit")}>
+                    <button type="button" className="flex-center shadow-sm py-[10px] px-[18px] text-semibold text-sm md:text-base  text-white bg-blue-pry border border-blue-pry rounded-lg flex-1" onClick={() => setSideBarModal("edit")}>
                         Edit
                     </button>
                 </div>

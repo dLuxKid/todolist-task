@@ -19,7 +19,7 @@ export default function Todos({ loading, toggleTodo, error, todos, setSelectedTo
         <div className="flex flex-col gap-4 w-full">
             <h1 className="text-base font-semibold text-gray-900">Tasks</h1>
             {loading && <Loader />}
-            {error && <p className='text-center w-full items-center text-base font-semibold text-red-600'>{error}</p>}
+            {error && <p className='text-center w-full items-center text-sm md:text-base font-semibold text-red-600'>{error}</p>}
             <ul className="w-full flex flex-col gap-4">
                 {
                     // TODO: add functionality to card, style custom checkmark

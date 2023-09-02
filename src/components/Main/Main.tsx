@@ -125,7 +125,7 @@ export default function Main() {
             <div className="w-full h-full flex-center flex-col gap-8">
                 <div className="flex-between w-full px-4 md:px-8">
                     <div>
-                        <h1 className="text-gray-900 leading-[2.375rem] font-semibold text-[1.875rem]">Good Morning!</h1>
+                        <h1 className="text-gray-900 leading-8 md:leading-[2.375rem] font-semibold text-2xl md:text-[1.875rem]">Good Morning!</h1>
                         <p className="text-gray-600 text-base font-normal">you have some tasks to do</p>
                     </div>
                     <div className='hidden md:block'>
@@ -143,7 +143,7 @@ export default function Main() {
                 <div className='flex gap-4 w-full max-w-6xl'>
                     <div className="px-4 md:px-8 flex flex-col gap-8 w-full md:w-[55%] big:w-2/3">
                         <div className="flex flex-col gap-4">
-                            <h1 className="text-base text-gray-900 font-semibold">{monthNames[new Date().getMonth()]}{" "}{new Date().getFullYear()}</h1>
+                            <h1 className="text-[12.741px] md:text-base text-gray-900 font-semibold">{monthNames[new Date().getMonth()]}{" "}{new Date().getFullYear()}</h1>
                             <div className="flex gap-4 overflow-x-scroll">
                                 {september2023Dates.map((date, i) => <DateCard key={i} date={date} />)}
                             </div>
