@@ -141,7 +141,7 @@ export default function Main() {
                     </div>
                 </div>
 
-                <div className='flex gap-4 w-full max-w-6xl'>
+                <div className='flex gap-4 w-full'>
                     <div className="px-4 md:px-8 flex flex-col gap-8 w-full md:w-[55%] big:w-2/3">
                         <div className="flex flex-col gap-4">
                             <h1 className="text-[12.741px] md:text-base text-gray-900 font-semibold">{monthNames[new Date().getMonth()]}{" "}{new Date().getFullYear()}</h1>
@@ -204,6 +204,7 @@ export default function Main() {
                             </div>
                         </div>
                     }
+
                     {screenWidth < 768 && !sideBarModal && <MobileSearchBar setSideBarModal={setSideBarModal} />}
                 </div>
             </div>
