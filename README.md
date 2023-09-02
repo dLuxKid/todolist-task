@@ -1,27 +1,30 @@
-# React + TypeScript + Vite
+# Todo List App with React.js + TypeScript
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a web and mobile responsive Todo List application implemented using React.js and TypeScript. It allows users to manage their tasks efficiently with features including adding, editing, deleting, and viewing todos. The application fetches dummy data from [jsonplaceholder.typicode.com/todos](https://jsonplaceholder.typicode.com/todos) for demonstration purposes.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Add a Todo:** Users can easily add new tasks to their todo list.
+- **Edit a Todo:** Existing todos can be edited and updated as needed.
+- **Delete a Todo:** Users have the option to remove completed or unnecessary todos.
+- **View All Todos:** The app displays a list of all the todos.
+- **Pagination:** To manage a large number of todos, the list is paginated for better user experience.
 
-## Expanding the ESLint configuration
+## Demo
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+You can view a live demo of the Todo List app at https://vercel.com/dluxkid/todolist-task
 
-- Configure the top-level `parserOptions` property like this:
+## Technologies Used
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+- React.js
+- TypeScript
+- CSS (Styling)
+- [jsonplaceholder.typicode.com](https://jsonplaceholder.typicode.com) (Dummy API)
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+
+## Acknowledgments
+
+- Thanks to [jsonplaceholder.typicode.com](https://jsonplaceholder.typicode.com) for providing dummy data for testing and development.
