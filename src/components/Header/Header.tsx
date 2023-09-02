@@ -56,7 +56,7 @@ export default function Header() {
                 {/* mobile nav */}
                 {
                     showMenu &&
-                    <div className="flex nav:hidden absolute top-16 right-0 sm:right-[5%] flex-col gap-6 py-8 px-4 bg-white shadow-sm w-full max-w-xs z-50">
+                    <div className="md:hidden absolute top-12 right-[2.5%] py-8 p-4 bg-white border border-gray-300 shadow-md w-full max-w-xs z-50">
                         <nav className="flex-center rounded rounded-r-none w-full" onClick={toggleMenu}>
                             <ul className="flex justify-between items-end flex-col gap-4">
                                 <li className="p-4 w-full flex-center gap-2 hover:bg-gray-200 rounded-md duration-500 cursor-pointer">

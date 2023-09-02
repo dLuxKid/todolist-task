@@ -82,6 +82,7 @@ export default function Main() {
             completed: !item.completed,
         } : todo)
         setTodos(newTodos);
+        setSideBarModal('')
         setLoading(false);
     }
 
@@ -190,15 +191,11 @@ export default function Main() {
                                     addTodo={addTodo}
                                     setSideBarModal={setSideBarModal}
                                 />}
-                            </div>
-                            <div className='z-50 absolute bottom-0 left-0 right-0 w-full'>
                                 {sideBarModal === 'about' && <AboutTodo
                                     selectedTodo={selectedTodo as TodosType}
                                     deleteTodo={deleteTodo}
                                     setSideBarModal={setSideBarModal}
                                 />}
-                            </div>
-                            <div className='z-50 absolute bottom-0 left-0 right-0 w-full'>
                                 {sideBarModal === 'edit' && <EditTodo
                                     editTodo={editTodo}
                                     setSideBarModal={setSideBarModal}
