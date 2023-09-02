@@ -23,7 +23,7 @@ export default function CalendarModal() {
                     'text-gray-700 hover:bg-gray-100 duration-300 h-10 w-10 rounded-full flex-center'
 
             }
-            className={'max-w-[24.625rem] px-6 py-5 border border-gray-200 rounded-lg shadow-md hidden md:block w-full'}
+            className={'max-w-[24.625rem] px-6 py-5 border border-gray-200 rounded-lg shadow-md hidden md:block'}
         />
     );
 }
