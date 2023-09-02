@@ -58,7 +58,7 @@ export default function Header() {
                     showMenu &&
                     <div className="md:hidden absolute top-12 right-[2.5%] py-8 p-4 bg-white border border-gray-300 shadow-md w-full max-w-xs z-50">
                         <nav className="flex-center rounded rounded-r-none w-full" onClick={toggleMenu}>
-                            <ul className="flex justify-between items-end flex-col gap-4">
+                            <ul className="flex w-full flex-col gap-4">
                                 <li className="p-4 w-full flex-center gap-2 hover:bg-gray-200 rounded-md duration-500 cursor-pointer">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <g clipPath="url(#clip0_1184_485)">
@@ -80,7 +80,7 @@ export default function Header() {
                                     <p className='text-base font-semibold text-gray-500'>notifications</p>
 
                                 </li>
-                                <li className="h-10 w-10 flex-center rounded-full overflow-hidden ml-3 cursor-pointer">
+                                <li className="h-10 w-10 self-center rounded-full overflow-hidden ml-3 cursor-pointer">
                                     <img src={logo} alt="avatar" className="w-full h-full object-fill object-center" />
                                 </li>
                             </ul>
