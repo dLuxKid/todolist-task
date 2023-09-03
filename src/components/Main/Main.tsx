@@ -113,7 +113,6 @@ export default function Main() {
         const newTodos = todos.map(todo => todo.id === item.id ? {
             ...item,
             title: item.title,
-            completed: false
         } : todo)
         setTodos(newTodos);
         setLoading(false);
